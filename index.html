@@ -1,0 +1,2004 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>God's Willingness To Help Mankind</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        />
+        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="quiz.css" />
+
+        <style>
+            /* Professional Engaging Spinner */
+            .tab-spinner {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 150px;
+                width: 100%;
+                position: relative;
+            }
+
+            /* Hide the original Font Awesome icon */
+            .tab-spinner i {
+                display: none;
+            }
+
+            /* Main spinner ring */
+            .tab-spinner::before {
+                content: "";
+                position: absolute;
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                border: 3px solid rgba(74, 109, 167, 0.1);
+                border-top: 3px solid #4a6da7;
+                border-right: 3px solid #4a6da7;
+                box-shadow: 0 0 15px rgba(74, 109, 167, 0.1);
+                animation: spinClockwise 1.2s
+                    cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
+            }
+
+            .highlight {
+                color: #4a6da7;
+                font-weight: bold;
+                text-decoration: underline;
+            }
+
+            /* Inner spinner ring */
+            .tab-spinner::after {
+                content: "";
+                position: absolute;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                border: 3px solid rgba(74, 109, 167, 0.05);
+                border-bottom: 3px solid #4a6da7;
+                border-left: 3px solid #4a6da7;
+                animation: spinCounterClockwise 1.8s
+                    cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
+            }
+
+            /* Create the pulse effect */
+            @keyframes spinClockwise {
+                0% {
+                    transform: rotate(0deg) scale(1);
+                }
+                50% {
+                    transform: rotate(180deg) scale(1.1);
+                    border-top-color: #5b7fbf;
+                    border-right-color: #5b7fbf;
+                    box-shadow: 0 0 20px rgba(74, 109, 167, 0.4);
+                }
+                100% {
+                    transform: rotate(360deg) scale(1);
+                }
+            }
+
+            @keyframes spinCounterClockwise {
+                0% {
+                    transform: rotate(0deg) scale(1);
+                }
+                50% {
+                    transform: rotate(-180deg) scale(1.15);
+                    border-bottom-color: #5b7fbf;
+                    border-left-color: #5b7fbf;
+                }
+                100% {
+                    transform: rotate(-360deg) scale(1);
+                }
+            }
+
+            /* Add a subtle pulsating dot in the center */
+            .tab-spinner .center-dot {
+                position: absolute;
+                width: 12px;
+                height: 12px;
+                background-color: #4a6da7;
+                border-radius: 50%;
+                animation: pulseDot 1.5s ease-in-out infinite;
+            }
+
+            @keyframes pulseDot {
+                0%,
+                100% {
+                    transform: scale(0.7);
+                    opacity: 0.5;
+                }
+                50% {
+                    transform: scale(1);
+                    opacity: 0.8;
+                    box-shadow: 0 0 10px rgba(74, 109, 167, 0.6);
+                }
+            }
+
+            /* Keep your existing fade transition */
+            .tab-content {
+                opacity: 0;
+                transition: opacity 0.3s ease-in-out;
+            }
+
+            .tab-content.active {
+                opacity: 1;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Loading Screen -->
+        <div class="loader-container">
+            <div class="loader-logo">
+                <img src="./logo.png" alt="Sunday School Logo" />
+                <div class="pulse"></div>
+            </div>
+            <div class="ministry-name">Life Gate Ministries Worldwide</div>
+            <div class="loader-text">Loading Sunday School Lesson</div>
+            <div class="progress-container">
+                <div class="progress-bar"></div>
+            </div>
+        </div>
+
+        <div class="inner-logo-container">
+            <img src="./logo.png" alt="Sunday School Logo" class="logo" />
+        </div>
+
+        <button
+            class="theme-toggle"
+            onclick="toggleTheme()"
+            aria-label="Toggle theme"
+            style="z-index: 99999"
+        >
+            <i class="fas fa-moon"></i>
+        </button>
+
+        <div class="container">
+            <h1><b>SUNDAY SCHOOL LESSON</b></h1>
+            <h2>
+                <b>DATE: <span>September 28, 2025</span></b>
+            </h2>
+            <h2>
+                <b>GOD'S WILLINGNESS TO HELP MANKIND</b>
+            </h2>
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress" id="lessonProgress"></div>
+                </div>
+            </div>
+
+            <!-- Tab Navigation -->
+
+            <div class="tabs">
+                <button class="tab-btn active" onclick="openTab('intro')">
+                    Introduction
+                </button>
+                <button class="tab-btn" onclick="openTab('lesson')">
+                    Lesson
+                </button>
+
+                <button class="tab-btn" onclick="openTab('conclusion')">
+                    Conclusion
+                </button>
+                <button class="tab-btn" onclick="openTab('application')">
+                    Application
+                </button>
+
+                <button class="tab-btn" onclick="openTab('quiz')">Quiz</button>
+                <button class="tab-btn" onclick="openTab('prayer')">
+                    Prayer Points
+                </button>
+            </div>
+
+            <div id="tab-spinner" class="tab-spinner" style="display: none">
+                <i class="fas fa-spinner fa-spin"></i>
+            </div>
+
+            <!-- Tab Contents -->
+            <div id="intro" class="tab-content active">
+                <div class="memory-verse">
+                    <h1><b>🧠📝 Memory Verse</b></h1>
+                    <blockquote>
+                        <b>
+                            For the Son of man is come to seek and to save that
+                            which was lost. - Luke 19:10 ⚖️📏🔁🪞⚠️</b
+                        >
+                        <br />
+                        <button
+                            onclick="showBibleVersions('Luke 19:10')"
+                            class="verse-btn btn-sm"
+                        >
+                            📖 Read Other Versions
+                        </button>
+                    </blockquote>
+                </div>
+                <h2><b>Text: Matthew 8:1-3 📚</b></h2>
+                <blockquote>
+                    <button
+                        onclick="showBibleVersions('Matthew 8:1-3')"
+                        class="verse-btn btn-sm"
+                    >
+                        📖 Read Matthew 8:1-3 📚
+                    </button>
+                </blockquote>
+
+                <h2><b>INTRODUCTION</b> 🧠✨📖</h2>
+                <p>
+                    The occurrences on planet earth and man's approaches to
+                    curbing them has not been very successful because man can't
+                    help himself. God made man to depend upon Him and that is
+                    why he is willing to offer the very assistance necessary at
+                    any time of need. This gift of Eve to Adam is a
+                    demonstration of God's willingness, having seen Adam's
+                    inability to cope. You need God to make it and He is willing
+                    to help you.
+                </p>
+
+                <div class="aims-objectives">
+                    <h3><b>AIMS AND OBJECTIVES</b> 🎯📖💡</h3>
+                    <p>
+                        <strong>AIMS:</strong> To address the wrong conclusion
+                        of men been master-minded by Satan that God is partial
+                        and unwiling to help even though he sees them in
+                        problem. ⚠️🕊️📖💰🤔
+                    </p>
+
+                    <p>
+                        <strong>OBJECTIVES:</strong> That man may receive God's
+                        help through the right approach.⚖️📖💰🤔
+                    </p>
+                </div>
+            </div>
+
+            <div id="lesson" class="tab-content">
+                <h2><b>Text Review/Lesson 📚✨</b></h2>
+
+                <div class="lesson-section">
+                    <h3><b>Lesson 📖💡</b></h3>
+                    <p>
+                        A great multitudes had gathered unto Jesus in Matthew 5
+                        and he went up to a mountain to educate them without
+                        demand. This was an offering to save the lost and dying
+                        people. Hosea 4:6 says the people are destroyed for lack
+                        of knowledge for lack of knowledge and knowledgoe fills
+                        the house with goodies - Prov. 24:4.
+                        <br />
+                        <button
+                            class="verse-btn btn-sm"
+                            onclick="showBibleVersions('Hosea 4:6')"
+                        >
+                            Hosea 4:6
+                        </button>
+                        <button
+                            class="verse-btn btn-sm"
+                            onclick="showBibleVersions('Proverbs 24:4')"
+                        >
+                            Proverbs 24:4
+                        </button>
+                    </p>
+
+                    <ol>
+                        <li>
+                            <h2>
+                                <u><b>Following With Right Purpose: 🎯👣</b></u>
+                            </h2>
+                            <p>
+                                You are among the many people who profess and
+                                follow Christ, but what is your purpose?
+                                <br />Except your purpose is right, although he
+                                is willing, you won't get help.
+                            </p>
+                        </li>
+
+                        <li>
+                            <h2>
+                                <b
+                                    ><u
+                                        >Understanding The Time and State:
+                                        💔🆚💖</u
+                                    ></b
+                                >
+                            </h2>
+                            <p>
+                                While everybody was busy following, the
+                                purposeful leper took advantage of the moment.
+                                The Lord had been with God and ministering to
+                                men, and he thought, “The presence of the Lord
+                                is here; no time could be better.” Most people
+                                do not know when God is moving, and that is why
+                                they remain unhelped.
+                            </p>
+                        </li>
+                        <li>
+                            <h2>
+                                <b><u>God is Not Partial 🌀🔥</u></b>
+                            </h2>
+                            <p>
+                                Lepers are rejected by men but when he came to
+                                Jesus, he was treated not as an outcast. God is
+                                not partial, come now and received help from
+                                Him. John 6:37, Acts 10:34.
+                                <br /><button
+                                    onclick="showBibleVersions('John 6:37')"
+                                    class="verse-btn btn-sm"
+                                >
+                                    John 6:37
+                                </button>
+                                <button
+                                    onclick="showBibleVersions('Acts 10:34')"
+                                    class="verse-btn btn-sm"
+                                >
+                                    Acts 10:34
+                                </button>
+                            </p>
+                        </li>
+
+                        <li>
+                            <h2>
+                                <b><u>Motivate God For Help 🌀🔥</u></b>
+                            </h2>
+                            <p>
+                                Whatever you need from God is possible but it
+                                will be easier received through motivation.
+                                Solomon motivated God and was blessed - 2 Chron.
+                                1:6-7. The leper worshipped God while others
+                                where just following and received attention and
+                                help.
+                                <br />
+                                <button
+                                    onclick="showBibleVersions('2 Chronicles 1:6-7')"
+                                    class="verse-btn btn-sm"
+                                >
+                                    2 Chronicles 1:6-7
+                                </button>
+                                <button
+                                    onclick="showBibleVersions('Matthew 8:2')"
+                                    class="verse-btn btn-sm"
+                                >
+                                    Matthew 8:2
+                                </button>
+                            </p>
+                        </li>
+
+                        <li>
+                            <h2>
+                                <b><u>Call on God in Faith 🌀🔥</u></b>
+                            </h2>
+                            <p>
+                                God regards faith - Hebrews 11:6, Matt. 8:10,13.
+                                The leper's request made in faith gave him help.
+                                Walk with God in faith.
+                            </p>
+
+                            <button
+                                onclick="showBibleVersions('Hebrews 11:6')"
+                                class="verse-btn btn-sm"
+                            >
+                                Hebrews 11:6
+                            </button>
+                            <button
+                                onclick="showBibleVersions('Matthew 8:10')"
+                                class="verse-btn btn-sm"
+                            >
+                                Matthew 8:10
+                            </button>
+                            <button
+                                onclick="showBibleVersions('Matthew 8:13')"
+                                class="verse-btn btn-sm"
+                            >
+                                Matthew 8:13
+                            </button>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+
+            <div id="conclusion" class="tab-content">
+                <h2>Conclusion 📜</h2>
+                <p>
+                    God is the God of all flesh and is willing to help anyone
+                    irrespective of person. Apply the right approach and you
+                    will get the right answer.
+                </p>
+
+                <br />
+            </div>
+
+            <div id="application" class="tab-content">
+                <h2>Personal Application 🧠🙏</h2>
+                <div class="reflection-section">
+                    <div class="interactive-cards">
+                        <!-- Understanding Check -->
+                        <div class="reflection-card">
+                            <h3>Learning from the Leper’s Example 👤✨</h3>
+                            <div class="love-meter">
+                                <p>
+                                    On a scale of 1 to 10, how much do you now
+                                    understand the importance of approaching
+                                    Jesus with the right purpose, the right
+                                    timing, and in faith—just as the leper did
+                                    in Matthew 8:2–3?
+                                </p>
+                                <div class="rating-container">
+                                    <input
+                                        type="range"
+                                        min="1"
+                                        max="10"
+                                        value="5"
+                                        class="love-slider"
+                                        id="faithRating"
+                                    />
+                                    <span class="rating-value">5/10</span>
+                                </div>
+                                <div class="rating-feedback"></div>
+                            </div>
+                        </div>
+
+                        <!-- Action Plan -->
+                        <div class="reflection-card">
+                            <h3>Action Plan for Daily Walk 🛡️🔥</h3>
+                            <div class="action-items">
+                                <div class="action-item">
+                                    <input type="checkbox" id="action1" />
+                                    <label for="action1">
+                                        Follow Christ with a right purpose, not
+                                        just with the crowd 👥
+                                    </label>
+                                </div>
+                                <div class="action-item">
+                                    <input type="checkbox" id="action2" />
+                                    <label for="action2">
+                                        Recognize God’s timing and move when His
+                                        presence is near ⏰🙏
+                                    </label>
+                                </div>
+                                <div class="action-item">
+                                    <input type="checkbox" id="action3" />
+                                    <label for="action3">
+                                        Remember that God is not partial—He
+                                        receives all who come by faith 🌍
+                                    </label>
+                                </div>
+                                <div class="action-item">
+                                    <input type="checkbox" id="action4" />
+                                    <label for="action4">
+                                        Motivate God through worship and
+                                        obedience, like Solomon and the leper
+                                        🎶🙌
+                                    </label>
+                                </div>
+                                <div class="action-item">
+                                    <input type="checkbox" id="action5" />
+                                    <label for="action5">
+                                        Walk daily by faith, for without faith
+                                        it is impossible to please God ✝️
+                                    </label>
+                                </div>
+                                <button class="add-action-btn">
+                                    Add Personal Action
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Reflection Journal -->
+                    <div class="reflection-journal">
+                        <h3>Reflection Journal ✍️📖</h3>
+                        <div class="journal-prompts">
+                            <div class="prompt active">
+                                <p>
+                                    What stood out to you most about the leper’s
+                                    encounter with Jesus in Matthew 8:1–3, and
+                                    why?
+                                </p>
+                                <textarea
+                                    class="reflection-input"
+                                    placeholder="Write your thoughts here..."
+                                ></textarea>
+                            </div>
+                            <div class="prompt">
+                                <p>
+                                    Can you recall a time when you recognized
+                                    God’s presence and took advantage of it,
+                                    like the leper did? What happened?
+                                </p>
+                                <textarea
+                                    class="reflection-input"
+                                    placeholder="Reflect on your experience and lessons learned..."
+                                ></textarea>
+                            </div>
+                            <div class="prompt">
+                                <p>
+                                    What practical step will you take this week
+                                    to strengthen your walk of faith and resist
+                                    being just a follower of the crowd?
+                                </p>
+                                <textarea
+                                    class="reflection-input"
+                                    placeholder="Be specific about your plan of obedience..."
+                                ></textarea>
+                            </div>
+                            <div class="prompt-nav">
+                                <button class="prev-prompt" disabled>
+                                    <i class="fas fa-arrow-left"></i>
+                                </button>
+                                <span class="prompt-counter">1/3</span>
+                                <button class="next-prompt">
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Commitment Section -->
+                    <div class="commitment-section">
+                        <h3>Personal Commitment 📜🖊️</h3>
+                        <div class="commitment-form">
+                            <p>Based on today’s lesson, I commit to:</p>
+                            <input
+                                type="text"
+                                class="commitment-input"
+                                placeholder="e.g., Approaching Jesus with faith and worship, not just following the crowd..."
+                            />
+                            <button class="save-commitment">
+                                Make Commitment
+                            </button>
+                        </div>
+                        <div class="saved-commitments">
+                            <h4>My Commitments Before the Lord 📂💬</h4>
+                            <ul class="commitment-list"></ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="application-summary" style="margin-top: 2rem">
+                    <h3>Summary & Challenge</h3>
+                    <p>
+                        The leper’s story teaches us that help comes when we
+                        follow Christ with the right purpose, discern His
+                        timing, and call on Him in faith. God is not partial—He
+                        will receive anyone who comes to Him. Let your worship,
+                        obedience, and faith motivate God to act on your behalf.
+                    </p>
+                    <ul>
+                        <li>Pray daily for faith and discernment.</li>
+                        <li>
+                            Resist the temptation to just “follow the crowd.”
+                        </li>
+                        <li>
+                            Motivate God through worship and a committed life.
+                        </li>
+                    </ul>
+                    <p>
+                        <b>Memory Verse:</b> “For the Son of man is come to seek
+                        and to save that which was lost.” – Luke 19:10
+                    </p>
+                </div>
+            </div>
+
+            <link rel="stylesheet" href="theme.css" />
+            <div id="quiz" class="tab-content">
+                <div class="quiz-container">
+                    <h3>Speed Quiz Challenge 🎯</h3>
+                    <div class="speed-quiz-container">
+                        <div class="quiz-stats">
+                            <div class="timer">
+                                ⏱️ Time: <span id="timer">50</span>s
+                            </div>
+                            <div class="score">
+                                Score: <span id="speed-score">0</span>
+                            </div>
+                        </div>
+                        <div id="question-container" class="question-display">
+                            <h4 style="color: green">Get Ready!</h4>
+                            <p style="color: green">
+                                Answer quickly for bonus points!
+                            </p>
+                        </div>
+
+                        <div class="answer-buttons">
+                            <button class="speed-btn" onclick="checkAnswer(0)">
+                                A
+                            </button>
+                            <button class="speed-btn" onclick="checkAnswer(1)">
+                                B
+                            </button>
+                            <button class="speed-btn" onclick="checkAnswer(2)">
+                                C
+                            </button>
+                            <button class="speed-btn" onclick="checkAnswer(3)">
+                                D
+                            </button>
+                        </div>
+
+                        <div class="controls">
+                            <button
+                                onclick="startSpeedQuiz()"
+                                class="start-btn"
+                            >
+                                Start Quiz
+                            </button>
+                            <button
+                                onclick="resetSpeedQuiz()"
+                                class="reset-btn"
+                            >
+                                Reset
+                            </button>
+                        </div>
+
+                        <div id="feedback" class="feedback"></div>
+                    </div>
+                </div>
+
+                <style>
+                    .quiz-container {
+                        padding: 15px;
+                        max-width: 100%;
+                    }
+
+                    .quiz-stats {
+                        display: flex;
+                        justify-content: space-between;
+                        flex-wrap: wrap;
+                        gap: 10px;
+                        margin-bottom: 15px;
+                        font-size: 16px;
+                    }
+
+                    .question-display {
+                        margin: 15px 0;
+                        padding: 10px;
+                        border-radius: 8px;
+                        background: #f5f5f5;
+                        word-wrap: break-word;
+                    }
+
+                    .answer-buttons {
+                        display: grid;
+                        grid-template-columns: repeat(2, 1fr);
+                        gap: 10px;
+                        margin: 15px 0;
+                    }
+
+                    .speed-btn {
+                        padding: 12px;
+                        font-size: 16px;
+                        border-radius: 8px;
+                        border: 2px solid #4a6da7;
+                        /* background: white; */
+                        min-height: 44px;
+                        touch-action: manipulation;
+                    }
+
+                    .controls {
+                        display: flex;
+                        gap: 10px;
+                        flex-wrap: wrap;
+                        justify-content: center;
+                    }
+
+                    .start-btn,
+                    .reset-btn {
+                        padding: 12px 24px;
+                        font-size: 16px;
+                        border-radius: 8px;
+                        min-width: 120px;
+                        touch-action: manipulation;
+                    }
+
+                    .badge {
+                        padding: 8px 16px;
+                        margin: 10px 0;
+                        width: 100%;
+                        text-align: center;
+                        font-size: 14px;
+                    }
+
+                    .performance-chart-container {
+                        width: 100%;
+                        max-width: 100%;
+                        overflow-x: auto;
+                        margin-top: 15px;
+                    }
+
+                    @media (max-width: 480px) {
+                        .quiz-stats {
+                            font-size: 14px;
+                        }
+
+                        .speed-btn {
+                            padding: 10px;
+                            font-size: 14px;
+                        }
+
+                        .start-btn,
+                        .reset-btn {
+                            padding: 10px 20px;
+                            font-size: 14px;
+                            min-width: 100px;
+                        }
+                    }
+                </style>
+
+                <!-- Rest of your quiz JavaScript code remains the same -->
+                <script>
+                    // ... (keep all existing code until endQuiz function) ...
+                    const speedQuestions = [
+                        {
+                            q: "What does Luke 19:10 say about the mission of the Son of Man?",
+                            a: [
+                                "To seek and save the lost",
+                                "To judge sinners",
+                                "To build synagogues",
+                                "To lead armies",
+                            ],
+                            correct: 0, // A
+                            match: 0,
+                        },
+                        {
+                            q: "According to the introduction, why can't man help himself?",
+                            a: [
+                                "Because he was made to depend on God",
+                                "Because he lacks wisdom",
+                                "Because Satan is stronger than man",
+                                "Because he is too weak physically",
+                            ],
+                            correct: 0, // A
+                            match: 0,
+                        },
+                        {
+                            q: "What was the aim of the lesson?",
+                            a: [
+                                "To prove that Satan is stronger than man",
+                                "To discourage people from seeking help",
+                                "To address the wrong belief that God is partial and unwilling to help",
+                                "To show that man can succeed without God",
+                            ],
+                            correct: 2, // C
+                            match: 2,
+                        },
+                        {
+                            q: "What was the objective of the lesson?",
+                            a: [
+                                "That man may focus only on earthly knowledge",
+                                "That man may avoid prayer and worship",
+                                "That man may learn to depend on himself",
+                                "That man may receive God’s help through the right approach",
+                            ],
+                            correct: 3, // D
+                            match: 3,
+                        },
+                        {
+                            q: "According to Hosea 4:6, why are people destroyed?",
+                            a: [
+                                "For lack of friendship",
+                                "For lack of knowledge",
+                                "For lack of wealth",
+                                "For lack of strength",
+                            ],
+                            correct: 1, // B
+                            match: 1,
+                        },
+                        {
+                            q: "What did the leper in Matthew 8:2 do differently from the crowd?",
+                            a: [
+                                "He followed without purpose",
+                                "He worshipped and approached Jesus in faith",
+                                "He asked the disciples for help",
+                                "He stayed away from Jesus",
+                            ],
+                            correct: 1, // B
+                            match: 1,
+                        },
+                        {
+                            q: "How does God view lepers or outcasts who come to Him?",
+                            a: [
+                                "As second-class followers",
+                                "As cursed people",
+                                "As rejected people",
+                                "As accepted and not treated as outcasts",
+                            ],
+                            correct: 3, // D
+                            match: 3,
+                        },
+                        {
+                            q: "What did Solomon do in 2 Chronicles 1:6-7 that motivated God?",
+                            a: [
+                                "He built the temple alone",
+                                "He fought many battles",
+                                "He offered a great sacrifice",
+                                "He fasted for 40 days",
+                            ],
+                            correct: 2, // C
+                            match: 2,
+                        },
+                        {
+                            q: "According to Hebrews 11:6, what is required to please God?",
+                            a: [
+                                "Sacrifice",
+                                "Faith",
+                                "Obedience to men",
+                                "Knowledge",
+                            ],
+                            correct: 1, // B
+                            match: 1,
+                        },
+                        {
+                            q: "What is the conclusion of the lesson?",
+                            a: [
+                                "God only helps certain people",
+                                "God is willing to help anyone who applies the right approach",
+                                "God only helps the strong",
+                                "God is partial in choosing who to help",
+                            ],
+                            correct: 1, // B
+                            match: 1,
+                        },
+                    ];
+
+                    let currentQuestion = 0;
+                    let timeLeft = 50;
+                    let timer;
+                    let score = 0;
+                    let isQuizActive = false;
+                    let questionResults = [];
+
+                    // ... other functions stay the same until endQuiz() ...
+                    function getPerformanceBadge(score) {
+                        // Changed to use score instead of percentage
+                        if (score >= 150) {
+                            return `<div class="badge gold">
+                                    <i class="fas fa-crown"></i>
+                                    <span>Grand Master of Tithing</span>
+                                </div>`;
+                        } else if (score >= 100) {
+                            return `<div class="badge silver">
+                                    <i class="fas fa-star"></i>
+                                    <span>Tithing Expert</span>
+                                </div>`;
+                        } else if (score >= 50) {
+                            return `<div class="badge bronze">
+                                    <i class="fas fa-award"></i>
+                                    <span>Tithing Scholar</span>
+                                </div>`;
+                        } else if (score >= 30) {
+                            return `<div class="badge beginner">
+                                    <i class="fas fa-seedling"></i>
+                                    <span>Tithing Student</span>
+                                </div>`;
+                        }
+                        return `<div class="badge beginner">
+                                <i class="fas fa-child"></i>
+                                <span>Tithing Beginner</span>
+                            </div>`;
+                    }
+
+                    function startSpeedQuiz() {
+                        if (isQuizActive) return;
+                        isQuizActive = true;
+                        score = 0;
+                        timeLeft = 100;
+                        currentQuestion = 0;
+                        questionResults = [];
+                        document.getElementById("speed-score").textContent =
+                            score;
+                        showQuestion();
+                        startTimer();
+                    }
+
+                    function showQuestion() {
+                        if (currentQuestion >= speedQuestions.length) {
+                            endQuiz();
+                            return;
+                        }
+                        const q = speedQuestions[currentQuestion];
+                        document.getElementById(
+                            "question-container"
+                        ).innerHTML = `
+                                <h4>Question ${currentQuestion + 1} of ${
+                            speedQuestions.length
+                        }:</h4>
+                                <p>${q.q}</p>
+                            `;
+                        document
+                            .querySelectorAll(".speed-btn")
+                            .forEach((btn, i) => {
+                                btn.textContent = q.a[i];
+                            });
+                    }
+
+                    function checkAnswer(choice) {
+                        if (!isQuizActive) return;
+                        const correct =
+                            speedQuestions[currentQuestion].correct === choice;
+                        const timebonus = Math.floor(timeLeft / 10);
+                        const pointsEarned = correct ? 10 + timebonus : 0;
+
+                        questionResults.push({
+                            question: currentQuestion + 1,
+                            correct: correct,
+                            points: pointsEarned,
+                            timeBonus: timebonus,
+                            match: speedQuestions[currentQuestion].match,
+                        });
+
+                        if (correct) {
+                            score += pointsEarned;
+                        }
+
+                        const feedback = document.getElementById("feedback");
+                        feedback.textContent = correct
+                            ? `Correct! +${pointsEarned} points`
+                            : "Wrong! Try the next question";
+                        feedback.className = `feedback ${
+                            correct ? "correct" : "wrong"
+                        }`;
+
+                        document.getElementById("speed-score").textContent =
+                            score;
+                        currentQuestion++;
+                        setTimeout(() => {
+                            feedback.textContent = "";
+                            showQuestion();
+                        }, 1000);
+                    }
+
+                    function startTimer() {
+                        timer = setInterval(() => {
+                            timeLeft--;
+                            document.getElementById("timer").textContent =
+                                timeLeft;
+                            if (timeLeft <= 0) endQuiz();
+                        }, 1000);
+                    }
+
+                    function createPerformanceChart() {
+                        const ctx = document.createElement("canvas");
+                        ctx.id = "performanceChart";
+                        ctx.style.marginTop = "20px";
+                        // Set minimum height for mobile
+                        ctx.style.minHeight = "300px"; // Added minimum height
+
+                        const labels = questionResults.map(
+                            (r) => `Q${r.question}`
+                        );
+                        const pointsData = questionResults.map((r) => r.points);
+                        const backgroundColors = questionResults.map(
+                            (r) =>
+                                r.correct
+                                    ? "rgba(75, 192, 192, 0.6)"
+                                    : "rgba(255, 0, 0, 0.6)" // Changed to pure red
+                        );
+                        const borderColors = questionResults.map(
+                            (r) =>
+                                r.correct
+                                    ? "rgba(75, 192, 192, 1)"
+                                    : "rgba(255, 0, 0, 1)" // Changed to pure red
+                        );
+
+                        new Chart(ctx, {
+                            type: "bar",
+                            data: {
+                                labels: labels,
+                                datasets: [
+                                    {
+                                        label: "Points per Question",
+                                        data: pointsData,
+                                        backgroundColor: backgroundColors,
+                                        borderColor: borderColors,
+                                        borderWidth: 1,
+                                    },
+                                ],
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                aspectRatio: 1,
+                                scales: {
+                                    y: {
+                                        beginAtZero: true,
+                                        title: {
+                                            display: true,
+                                            text: "Points",
+                                        },
+                                    },
+                                    x: {
+                                        title: {
+                                            display: true,
+                                            text: "Questions",
+                                        },
+                                    },
+                                },
+                                plugins: {
+                                    title: {
+                                        display: true,
+                                        text: "Performance Breakdown",
+                                    },
+                                    legend: {
+                                        display: false,
+                                    },
+                                },
+                            },
+                        });
+                        return ctx;
+                    }
+
+                    function endQuiz() {
+                        isQuizActive = false;
+                        clearInterval(timer);
+                        const questionsAttempted = currentQuestion;
+                        const correctAnswers = questionResults.filter(
+                            (r) => r.correct
+                        ).length;
+                        const scorePercentage = Math.round(
+                            (correctAnswers / speedQuestions.length) * 100
+                        );
+
+                        const container =
+                            document.getElementById("question-container");
+                        container.innerHTML = `
+                            <h4>Quiz Complete!</h4>
+                            ${getPerformanceBadge(score)}
+                            <p>Questions Attempted: ${questionsAttempted} of ${
+                            speedQuestions.length
+                        }</p>
+                            <p>Final Score: ${score} points</p>
+                            <p>Performance: ${scorePercentage}%</p>
+                            <p>Time Remaining: ${timeLeft}s</p>
+                            <p>${getScoreMessage(score)}</p>
+                            
+                            <div class="share-buttons">
+                                <button onclick="shareToWhatsApp()" class="share-btn whatsapp">
+                                    <i class="fab fa-whatsapp"></i> Share to WhatsApp
+                                </button>
+                                <button onclick="shareToFacebook()" class="share-btn facebook">
+                                    <i class="fab fa-facebook"></i> Share to Facebook
+                                </button>
+                            </div>
+
+                            <div class="performance-chart-container"></div>
+                        `;
+
+                        container
+                            .querySelector(".performance-chart-container")
+                            .appendChild(createPerformanceChart());
+
+                        // Add styles for share buttons
+                        const style = document.createElement("style");
+                        style.textContent = `
+                            .share-buttons {
+                                display: flex;
+                                gap: 10px;
+                                margin: 15px 0;
+                                justify-content: center;
+                            }
+                            .share-btn {
+                                padding: 10px 20px;
+                                border: none;
+                                border-radius: 5px;
+                                cursor: pointer;
+                                display: flex;
+                                align-items: center;
+                                gap: 8px;
+                                color: white;
+                                font-size: 14px;
+                            }
+                            .whatsapp {
+                                background-color: #25D366;
+                            }
+                            .facebook {
+                                background-color: #1877F2;
+                            }
+                        `;
+                        document.head.appendChild(style);
+                    }
+
+                    function shareToWhatsApp() {
+                        const text = `🎯 Bible Quiz Result!\n
+                📊 My Score: ${score} points\n
+                ⭐ Performance: ${Math.round(
+                    (questionResults.filter((r) => r.correct).length /
+                        speedQuestions.length) *
+                        100
+                )}%\n
+                🎮 Try the quiz yourself at: ${window.location.href}`;
+
+                        const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(
+                            text
+                        )}`;
+                        window.open(whatsappUrl, "_blank");
+                    }
+
+                    function shareToFacebook() {
+                        const text = `I scored ${score} points in the Bible Quiz! Can you beat my score?`;
+                        const fbUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+                            window.location.href
+                        )}&quote=${encodeURIComponent(text)}`;
+                        window.open(fbUrl, "_blank", "width=600,height=400");
+                    }
+
+                    // ... (keep remaining functions the same) ...
+                    function getScoreMessage(score) {
+                        if (score >= 150) {
+                            return "Outstanding! You have excellent knowledge of tithing principles!";
+                        } else if (score >= 100) {
+                            return "Great work! You understand tithing concepts well!";
+                        } else if (score >= 50) {
+                            return "Good effort! Keep studying to improve your understanding.";
+                        } else if (score >= 30) {
+                            return "Keep learning! Review the lesson materials for better understanding.";
+                        }
+                        return "Don't give up! Review the lesson and try again.";
+                    }
+
+                    function resetSpeedQuiz() {
+                        isQuizActive = false;
+                        clearInterval(timer);
+                        score = 0;
+                        timeLeft = 100;
+                        currentQuestion = 0;
+                        questionResults = [];
+                        document.getElementById("speed-score").textContent =
+                            "0";
+                        document.getElementById("timer").textContent = "100";
+                        document.getElementById("feedback").textContent = "";
+                        document.getElementById(
+                            "question-container"
+                        ).innerHTML = `
+                                <h4 style="color:green">Get Ready!</h4>
+                                <p style="color:green">Answer quickly for bonus points!</p>
+                            `;
+                    }
+
+                    // Initialize quiz on page load
+                    document.addEventListener("DOMContentLoaded", () => {
+                        resetSpeedQuiz();
+                    });
+                </script>
+            </div>
+
+            <link rel="stylesheet" href="prayer.css" />
+
+            <div id="prayer" class="tab-content">
+                <h2>Prayer Points</h2>
+                <div class="prayer-section">
+                    <div class="prayer-points">
+                        <div class="prayer-item">
+                            <div class="prayer-text">
+                                Lord, thank You for Your Word that brings light
+                                and understanding. Open my heart to receive and
+                                walk in the truth of Your promises.
+                            </div>
+                        </div>
+                        <div class="prayer-item">
+                            <div class="prayer-text">
+                                Father, help me to put my full trust in You,
+                                even when circumstances seem difficult.
+                                Strengthen my faith to hold on to Your unfailing
+                                power.
+                            </div>
+                        </div>
+                        <div class="prayer-item">
+                            <div class="prayer-text">
+                                Holy Spirit, guide me daily to walk in
+                                obedience, so that my life may bring glory to
+                                God and be a testimony of His goodness.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chart.js -->
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+            <script>
+                // Initialize Chart
+                const ctx = document
+                    .getElementById("tithingChart")
+                    .getContext("2d");
+                const tithingChart = new Chart(ctx, {
+                    type: "bar",
+                    data: {
+                        labels: ["Week 1", "Week 2", "Week 3", "Week 4"],
+                        datasets: [
+                            {
+                                label: "Tithe Given",
+                                data: [0, 0, 0, 0],
+                                backgroundColor: "#4a6da7",
+                                borderColor: "#4a6da7",
+                                borderWidth: 1,
+                            },
+                        ],
+                    },
+                    options: {
+                        responsive: true,
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                max: 1,
+                            },
+                        },
+                    },
+                });
+
+                // Update chart when checkboxes are clicked
+                function updateChart() {
+                    const weeks = ["week1", "week2", "week3", "week4"];
+                    const newData = weeks.map((id) =>
+                        document.getElementById(id).checked ? 1 : 0
+                    );
+                    tithingChart.data.datasets[0].data = newData;
+                    tithingChart.update();
+                }
+
+                // Update progress bar
+                function updateProgress() {
+                    const total = 7; // 4 weeks + 3 verses
+                    const checked = document.querySelectorAll(
+                        '#assignment input[type="checkbox"]:checked'
+                    ).length;
+                    const percent = (checked / total) * 100;
+
+                    document.getElementById("assignmentProgress").style.width =
+                        percent + "%";
+                    document.getElementById("progressText").textContent =
+                        Math.round(percent) + "% Complete";
+
+                    updateChart();
+                }
+
+                // Save reflection
+                function saveReflection() {
+                    const reflection =
+                        document.getElementById("reflectionText").value;
+                    localStorage.setItem("tithingReflection", reflection);
+                    alert("Reflection saved!");
+                }
+
+                // Load reflection on page load
+                document.addEventListener("DOMContentLoaded", () => {
+                    const saved = localStorage.getItem("tithingReflection");
+                    if (saved) {
+                        document.getElementById("reflectionText").value = saved;
+                    }
+                });
+            </script>
+
+            <!-- Add this modal for Bible versions -->
+            <div id="verse-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2 id="verse-reference"></h2>
+                    <div class="version-tab">
+                        <button
+                            class="version-btn"
+                            onclick="showVersion('KJV')"
+                        >
+                            KJV
+                        </button>
+                        <button
+                            class="version-btn"
+                            onclick="showVersion('NKJV')"
+                        >
+                            NKJV
+                        </button>
+                        <button
+                            class="version-btn"
+                            onclick="showVersion('NIV')"
+                        >
+                            NIV
+                        </button>
+                        <button
+                            class="version-btn"
+                            onclick="showVersion('ESV')"
+                        >
+                            ESV
+                        </button>
+                        <button
+                            class="version-btn"
+                            onclick="showVersion('AMP')"
+                        >
+                            AMP
+                        </button>
+                        <button
+                            class="version-btn"
+                            onclick="showVersion('NLT')"
+                        >
+                            NLT
+                        </button>
+                    </div>
+                    <div id="verse-text"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Replace your existing font controls with this -->
+        <div class="font-controls">
+            <button
+                onclick="adjustFontSize(-1)"
+                aria-label="Decrease font size"
+            >
+                <i class="fas fa-minus"></i>
+            </button>
+            <span class="font-size">16px</span>
+            <button onclick="adjustFontSize(1)" aria-label="Increase font size">
+                <i class="fas fa-plus"></i>
+            </button>
+            <select
+                class="font-family-select"
+                onchange="changeFont(this.value)"
+            >
+                <option value="'Segoe UI', sans-serif">Default</option>
+                <option value="Arial, sans-serif">Arial</option>
+                <option value="Georgia, serif">Georgia</option>
+                <option value="'Times New Roman', serif">
+                    Times New Roman
+                </option>
+                <option value="'Comic Sans MS', cursive">Comic Sans</option>
+            </select>
+        </div>
+
+        <script
+            src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"
+        ></script>
+
+        <script>
+            $(function () {
+                let tab = $("tab");
+                tab.click(function () {
+                    alert;
+                });
+            });
+        </script>
+
+        <script>
+            // Loading Screen
+            window.addEventListener("load", function () {
+                setTimeout(() => {
+                    document.querySelector(".loader-container").style.display =
+                        "none";
+                }, 2000);
+            });
+
+            // // Tab Functionality
+            function openTab(tabName) {
+                const tabContents =
+                    document.getElementsByClassName("tab-content");
+                const tabButtons = document.getElementsByClassName("tab-btn");
+                const spinner = document.getElementById("tab-spinner");
+
+                for (let content of tabContents) {
+                    content.classList.remove("active");
+                    content.style.display = "none";
+                }
+
+                for (let button of tabButtons) {
+                    button.classList.remove("active");
+                }
+
+                document.getElementById(tabName).classList.add("active");
+                event.currentTarget.classList.add("active");
+
+                spinner.style.display = "flex";
+
+                setTimeout(() => {
+                    // Hide spinner
+                    spinner.style.display = "none";
+
+                    // Show selected tab content
+                    const selectedTab = document.getElementById(tabName);
+                    selectedTab.style.display = "block";
+
+                    // Trigger a reflow before adding the active class for animation
+                    void selectedTab.offsetWidth;
+
+                    // Add active class to fade in the content
+                    selectedTab.classList.add("active");
+
+                    // Update progress if needed
+                    updateProgress();
+                }, 800); // Adjust loading time as needed (800ms)
+            }
+
+            // Theme Toggle
+
+            function toggleTheme() {
+                document.body.classList.toggle("dark-mode");
+                const icon = document.querySelector(".theme-toggle i");
+                icon.classList.toggle("fa-moon");
+                icon.classList.toggle("fa-sun");
+            }
+
+            // Add these functions to your existing JavaScript
+
+            function showBibleVersions(reference) {
+                const modal = document.getElementById("verse-modal");
+                const verseRef = document.getElementById("verse-reference");
+                verseRef.textContent = reference;
+                modal.style.display = "block";
+                document.body.classList.add("modal-open");
+                showVersion(preferredVersion);
+            }
+
+            const bibleVerses = {
+                "Luke 19:10": {
+                    KJV: "<b>10</b> For the Son of man is come to seek and to save that which was lost.",
+                    NKJV: "<b>10</b> for the Son of Man has come to seek and to save that which was lost.",
+                    NIV: "<b>10</b> For the Son of Man came to seek and to save the lost.",
+                    ESV: "<b>10</b> For the Son of Man came to seek and to save the lost.",
+                    AMP: "<b>10</b> for the Son of Man has come to seek and to save that which was lost.",
+                    NLT: "<b>10</b> For the Son of Man came to seek and save those who are lost.",
+                },
+                "Matthew 8:1-3": {
+                    KJV: "<b>1</b> When he was come down from the mountain, great multitudes followed him. <b>2</b> And, behold, there came a leper and worshipped him, saying, Lord, if thou wilt, thou canst make me clean. <b>3</b> And Jesus put forth his hand, and touched him, saying, I will; be thou clean. And immediately his leprosy was cleansed.",
+                    NKJV: "<b>1</b> When He had come down from the mountain, great multitudes followed Him. <b>2</b> And behold, a leper came and worshiped Him, saying, “Lord, if You are willing, You can make me clean.” <b>3</b> Then Jesus put out His hand and touched him, saying, “I am willing; be cleansed.” Immediately his leprosy was cleansed.",
+                    NIV: "<b>1</b> When Jesus came down from the mountainside, large crowds followed him. <b>2</b> A man with leprosy came and knelt before him and said, “Lord, if you are willing, you can make me clean.” <b>3</b> Jesus reached out his hand and touched the man. “I am willing,” he said. “Be clean!” Immediately he was cleansed of his leprosy.",
+                    ESV: "<b>1</b> When he came down from the mountain, great crowds followed him. <b>2</b> And behold, a leper came to him and knelt before him, saying, “Lord, if you will, you can make me clean.” <b>3</b> And Jesus stretched out his hand and touched him, saying, “I will; be clean.” And immediately his leprosy was cleansed.",
+                    AMP: "<b>1</b> When Jesus came down from the mountain, large crowds followed Him. <b>2</b> And a leper came up to Him and bowed down before Him, saying, “Lord, if You are willing, You are able to make me clean (well).” <b>3</b> Jesus reached out His hand and touched him, saying, “I am willing; be cleansed.” Immediately his leprosy was cleansed.",
+                    NLT: "<b>1</b> Large crowds followed Jesus as he came down the mountainside. <b>2</b> Suddenly, a man with leprosy approached him and knelt before him. “Lord,” the man said, “if you are willing, you can heal me and make me clean.” <b>3</b> Jesus reached out and touched him. “I am willing,” he said. “Be healed!” And instantly the leprosy disappeared.",
+                },
+
+                "Hosea 4:6": {
+                    KJV: "<b>6</b> My people are destroyed for lack of knowledge: because thou hast rejected knowledge, I will also reject thee, that thou shalt be no priest to me: seeing thou hast forgotten the law of thy God, I will also forget thy children.",
+                    NKJV: "<b>6</b> My people are destroyed for lack of knowledge. Because you have rejected knowledge, I also will reject you from being priest for Me; Because you have forgotten the law of your God, I also will forget your children.",
+                    NIV: "<b>6</b> my people are destroyed from lack of knowledge. Because you have rejected knowledge, I also reject you as my priests; because you have ignored the law of your God, I also will ignore your children.",
+                    ESV: "<b>6</b> My people are destroyed for lack of knowledge; because you have rejected knowledge, I reject you from being a priest to me. And since you have forgotten the law of your God, I also will forget your children.",
+                    AMP: "<b>6</b> My people are destroyed for lack of knowledge [of My law, where I reveal My will]. Because you [the priestly nation] have rejected knowledge, I will also reject you from being My priest. Since you have forgotten the law of your God, I will also forget your children.",
+                    NLT: "<b>6</b> My people are being destroyed because they don’t know me. Since you priests refuse to know me, I refuse to recognize you as my priests. Since you have forgotten the laws of your God, I will forget to bless your children.",
+                },
+                "Proverbs 24:4": {
+                    KJV: "<b>4</b> And by knowledge shall the chambers be filled with all precious and pleasant riches.",
+                    NKJV: "<b>4</b> By knowledge the rooms are filled With all precious and pleasant riches.",
+                    NIV: "<b>4</b> through knowledge its rooms are filled with rare and beautiful treasures.",
+                    ESV: "<b>4</b> by knowledge the rooms are filled with all precious and pleasant riches.",
+                    AMP: "<b>4</b> And by knowledge its rooms are filled With all precious and pleasant riches.",
+                    NLT: "<b>4</b> Through knowledge its rooms are filled with all sorts of precious riches and valuables.",
+                },
+                "John 6:37": {
+                    KJV: "<b>37</b> All that the Father giveth me shall come to me; and him that cometh to me I will in no wise cast out.",
+                    NKJV: "<b>37</b> All that the Father gives Me will come to Me, and the one who comes to Me I will by no means cast out.",
+                    NIV: "<b>37</b> All those the Father gives me will come to me, and whoever comes to me I will never drive away.",
+                    ESV: "<b>37</b> All that the Father gives me will come to me, and whoever comes to me I will never cast out.",
+                    AMP: "<b>37</b> All that My Father gives Me will come to Me; and the one who comes to Me I will most certainly not cast out [I will never, never reject anyone who follows Me].",
+                    NLT: "<b>37</b> However, those the Father has given me will come to me, and I will never reject them.",
+                },
+
+                "Acts 10:34": {
+                    KJV: "<b>34</b> Then Peter opened his mouth, and said, Of a truth I perceive that God is no respecter of persons:",
+                    NKJV: "<b>34</b> Then Peter opened his mouth and said: “In truth I perceive that God shows no partiality.",
+                    NIV: "<b>34</b> Then Peter began to speak: “I now realize how true it is that God does not show favoritism",
+                    ESV: "<b>34</b> So Peter opened his mouth and said: “Truly I understand that God shows no partiality,",
+                    AMP: "<b>34</b> Opening his mouth, Peter said: “Most certainly I understand now that God is not one to show partiality [to people as though Gentiles were excluded from God’s blessing],",
+                    NLT: "<b>34</b> Then Peter replied, “I see very clearly that God shows no favoritism.",
+                },
+
+                "2 Chronicles 1:6-7": {
+                    KJV: "<b>6</b> And Solomon went up thither to the brasen altar before the Lord, which was at the tabernacle of the congregation, and offered a thousand burnt offerings upon it. <b>7</b> In that night did God appear unto Solomon, and said unto him, Ask what I shall give thee.",
+                    NKJV: "<b>6</b> And Solomon went up there to the bronze altar before the Lord, which was at the tabernacle of meeting, and offered a thousand burnt offerings on it. <b>7</b> On that night God appeared to Solomon, and said to him, “Ask! What shall I give you?”",
+                    NIV: "<b>6</b> Solomon went up to the bronze altar before the Lord in the tent of meeting and offered a thousand burnt offerings on it. <b>7</b> That night God appeared to Solomon and said to him, “Ask for whatever you want me to give you.”",
+                    ESV: "<b>6</b> And Solomon went up there to the bronze altar before the Lord, which was at the tent of meeting, and offered a thousand burnt offerings on it. <b>7</b> In that night God appeared to Solomon, and said to him, “Ask what I shall give you.”",
+                    AMP: "<b>6</b> And Solomon went up to the bronze altar before the Lord at the Tent of Meeting, and offered a thousand burnt offerings on it. <b>7</b> That night God appeared to Solomon and said to him, “Ask what I shall give you.”",
+                    NLT: "<b>6</b> There in front of the Tabernacle, Solomon went up to the bronze altar in the Lord’s presence and sacrificed 1,000 burnt offerings on it. <b>7</b> That night God appeared to Solomon and said, “What do you want? Ask, and I will give it to you!”",
+                },
+
+                "Matthew 8:2": {
+                    KJV: "<b>2</b> And, behold, there came a leper and worshipped him, saying, Lord, if thou wilt, thou canst make me clean.",
+                    NKJV: "<b>2</b> And behold, a leper came and worshiped Him, saying, “Lord, if You are willing, You can make me clean.”",
+                    NIV: "<b>2</b> A man with leprosy came and knelt before him and said, “Lord, if you are willing, you can make me clean.”",
+                    ESV: "<b>2</b> And behold, a leper came to him and knelt before him, saying, “Lord, if you will, you can make me clean.”",
+                    AMP: "<b>2</b> And a leper came up to Him and bowed down before Him, saying, “Lord, if You are willing, You are able to make me clean (well).”",
+                    NLT: "<b>2</b> Suddenly, a man with leprosy approached him and knelt before him. “Lord,” the man said, “if you are willing, you can heal me and make me clean.”",
+                },
+
+                "Hebrews 11:6": {
+                    KJV: "<b>6</b> But without faith it is impossible to please him: for he that cometh to God must believe that he is, and that he is a rewarder of them that diligently seek him.",
+                    NKJV: "<b>6</b> But without faith it is impossible to please Him, for he who comes to God must believe that He is, and that He is a rewarder of those who diligently seek Him.",
+                    NIV: "<b>6</b> And without faith it is impossible to please God, because anyone who comes to him must believe that he exists and that he rewards those who earnestly seek him.",
+                    ESV: "<b>6</b> And without faith it is impossible to please him, for whoever would draw near to God must believe that he exists and that he rewards those who seek him.",
+                    AMP: "<b>6</b> But without faith it is impossible to walk with God and please Him, for whoever comes [near] to God must [necessarily] believe that God exists and that He rewards those who [earnestly and diligently] seek Him.",
+                    NLT: "<b>6</b> And it is impossible to please God without faith. Anyone who wants to come to him must believe that God exists and that he rewards those who sincerely seek him.",
+                },
+                "Matthew 8:10": {
+                    KJV: "<b>10</b> When Jesus heard it, he marvelled, and said to them that followed, Verily I say unto you, I have not found so great faith, no, not in Israel.",
+                    NKJV: "<b>10</b> When Jesus heard it, He marveled, and said to those who followed, “Assuredly, I say to you, I have not found such great faith, not even in Israel!",
+                    NIV: "<b>10</b> When Jesus heard this, he was amazed and said to those following him, “Truly I tell you, I have not found anyone in Israel with such great faith.",
+                    ESV: "<b>10</b> When Jesus heard this, he marveled and said to those who followed him, “Truly, I tell you, with no one in Israel have I found such faith.",
+                    AMP: "<b>10</b> When Jesus heard this, He was amazed and said to those who were following Him, “I tell you truthfully, I have not found such great faith [as this, with anyone] in Israel.",
+                    NLT: "<b>10</b> When Jesus heard this, he was amazed. Turning to those who were following him, he said, “I tell you the truth, I haven’t seen faith like this in all Israel!",
+                },
+
+                "Matthew 8:13": {
+                    KJV: "<b>13</b> And Jesus said unto the centurion, Go thy way; and as thou hast believed, so be it done unto thee. And his servant was healed in the selfsame hour.",
+                    NKJV: "<b>13</b> Then Jesus said to the centurion, “Go your way; and as you have believed, so let it be done for you.” And his servant was healed that same hour.",
+                    NIV: "<b>13</b> Then Jesus said to the centurion, “Go! Let it be done just as you believed it would.” And his servant was healed at that moment.",
+                    ESV: "<b>13</b> And to the centurion Jesus said, “Go; let it be done for you as you have believed.” And the servant was healed at that very moment.",
+                    AMP: "<b>13</b> Then Jesus said to the centurion, “Go; it will be done for you as you have believed.” And the servant was restored to health at that very hour.",
+                    NLT: "<b>13</b> Then Jesus said to the Roman officer, “Go back home. Because you believed, it has happened.” And the young servant was healed that same hour.",
+                },
+            };
+
+            // Replace the existing showVersion function
+
+            function showVersion(version) {
+                const reference =
+                    document.getElementById("verse-reference").textContent;
+                const verseText = document.getElementById("verse-text");
+
+                // Show loader
+                verseText.innerHTML =
+                    '<div class="verse-loader"><i class="fas fa-spinner fa-2x"></i></div>';
+
+                // Simulate loading time and show verse
+                setTimeout(() => {
+                    if (bibleVerses[reference]) {
+                        verseText.innerHTML = `<p class="verse-text">${bibleVerses[reference][version]}</p>`;
+                        // Add show class after a brief delay to trigger fade-in
+                        setTimeout(() => {
+                            document
+                                .querySelector(".verse-text")
+                                .classList.add("show");
+                        }, 300);
+                    } else {
+                        verseText.innerHTML =
+                            "<p>Verse not found in database.</p>";
+                    }
+
+                    // Update active button
+                    document.querySelectorAll(".version-btn").forEach((btn) => {
+                        btn.classList.remove("active");
+                        if (btn.textContent === version)
+                            btn.classList.add("active");
+                    });
+                }, 500); // Half second loading time
+            }
+
+            // Close modal when clicking the X or outside
+            document.querySelector(".close").onclick = function () {
+                document.getElementById("verse-modal").style.display = "none";
+                document.body.classList.remove("modal-open");
+            };
+
+            window.onclick = function (event) {
+                const modal = document.getElementById("verse-modal");
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                    document.body.classList.remove("modal-open");
+                }
+            };
+
+            function checkQuiz() {
+                const answers = {
+                    q1: "a", // Malachi 3:10
+                    q2: "b", // Time of Melchizedek and Abraham
+                    q3: "a", // No, it predates the Law of Moses
+                    q4: "c", // Christ
+                    q5: "a", // Hebrews 7:6-8
+                    q6: "a", // To support Melchizedek's priesthood
+                };
+
+                let score = 0;
+                let total = Object.keys(answers).length;
+                let resultsHTML = "<h3>📊 Quiz Results</h3><ul>";
+
+                for (let key in answers) {
+                    const selected = document.querySelector(
+                        `input[name="${key}"]:checked`
+                    );
+                    if (selected) {
+                        if (selected.value === answers[key]) {
+                            score++;
+                            resultsHTML += `<li>Question ${key.slice(
+                                1
+                            )}: ✅ Correct</li>`;
+                        } else {
+                            resultsHTML += `<li>Question ${key.slice(
+                                1
+                            )}: ❌ Incorrect</li>`;
+                        }
+                    } else {
+                        resultsHTML += `<li>Question ${key.slice(
+                            1
+                        )}: ⚠️ Not answered</li>`;
+                    }
+                }
+
+                resultsHTML += `</ul>`;
+
+                // Calculate percentage and add appropriate styling
+                const percentage = Math.round((score / total) * 100);
+                let scoreClass = "";
+                let message = "";
+
+                if (percentage >= 80) {
+                    scoreClass = "score-excellent";
+                    message =
+                        "🎉 Excellent work! You have a strong understanding of biblical tithing.";
+                } else if (percentage >= 60) {
+                    scoreClass = "score-good";
+                    message =
+                        "👍 Good job! You have a solid foundation, but consider reviewing some concepts.";
+                } else {
+                    scoreClass = "score-needs-improvement";
+                    message =
+                        "📚 Keep studying! Review the lesson materials to strengthen your understanding.";
+                }
+
+                resultsHTML += `<div class="score-summary ${scoreClass}">
+                            <strong>Your Score: ${score} out of ${total} (${percentage}%)</strong>
+                            <br><br>${message}
+                        </div>`;
+
+                const resultsDiv = document.getElementById("quiz-results");
+                resultsDiv.innerHTML = resultsHTML;
+                resultsDiv.classList.add("show");
+                resultsDiv.scrollIntoView({ behavior: "smooth" });
+            }
+
+            let progress = 0;
+            const totalSections = 5; // Number of tabs
+
+            function updateProgress(increment = true) {
+                if (increment) {
+                    progress = Math.min(100, progress + 100 / totalSections);
+                }
+                const progressBar = document.querySelector(".progress");
+                const progressText = document.querySelector(".progress-text");
+                progressBar.style.width = `${progress}%`;
+                progressText.textContent = `${Math.round(progress)}% Complete`;
+
+                if (progress >= 100) {
+                    showToast(
+                        "Congratulations! You've completed the lesson! 🎉"
+                    );
+                }
+            }
+
+            function showToast(message) {
+                const toast = document.createElement("div");
+                toast.className = "toast";
+                toast.textContent = message;
+                document.body.appendChild(toast);
+
+                // Trigger reflow
+                toast.offsetHeight;
+
+                // Show toast
+                toast.style.opacity = "1";
+
+                // Hide after 3 seconds
+                setTimeout(() => {
+                    toast.style.opacity = "0";
+                    setTimeout(() => toast.remove(), 300);
+                }, 3000);
+            }
+
+            // Add interaction tracking to tab switching
+            const originalOpenTab = openTab;
+            openTab = function (tabName) {
+                originalOpenTab(tabName);
+                updateProgress();
+
+                // Add animation to questions
+                if (tabName === "quiz") {
+                    document.querySelectorAll(".question").forEach((q, i) => {
+                        setTimeout(() => q.classList.add("show"), i * 200);
+                    });
+                }
+            };
+
+            // Save progress to localStorage
+            function saveProgress() {
+                localStorage.setItem("lessonProgress", progress);
+                showToast("Progress saved! 💾");
+            }
+
+            // Load saved progress
+            window.addEventListener("load", () => {
+                const savedProgress = localStorage.getItem("lessonProgress");
+                if (savedProgress) {
+                    progress = parseFloat(savedProgress);
+                    updateProgress(false);
+                }
+            });
+
+            // Share functionality
+            function shareLesson() {
+                if (navigator.share) {
+                    navigator
+                        .share({
+                            title: "Sunday School Lesson",
+                            text: "Check out this lesson on Real Christian Clothing!",
+                            url: window.location.href,
+                        })
+                        .then(() => showToast("Shared successfully! 🙌"))
+                        .catch(() => showToast("Sharing failed"));
+                } else {
+                    showToast("Sharing not supported on this device");
+                }
+            }
+
+            // Scroll to top
+            function scrollToTop() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth",
+                });
+            }
+
+            // Add to your existing JavaScript
+
+            let preferredVersion =
+                localStorage.getItem("preferredVersion") || "KJV";
+
+            function changeDefaultVersion(version) {
+                preferredVersion = version;
+                localStorage.setItem("preferredVersion", version);
+                showVersion(version);
+                showToast(`Default Bible version changed to ${version}`);
+            }
+
+            // Update the showBibleVersions function
+
+            // Load preferred version on startup
+            window.addEventListener("load", () => {
+                const savedVersion = localStorage.getItem("preferredVersion");
+                if (savedVersion) {
+                    preferredVersion = savedVersion;
+                    document.querySelectorAll(".version-btn").forEach((btn) => {
+                        btn.classList.remove("active");
+                        if (btn.textContent === preferredVersion)
+                            btn.classList.add("active");
+                    });
+                }
+            });
+
+            // Add this to your existing <script> section
+            let currentFontSize =
+                parseInt(localStorage.getItem("preferredFontSize")) || 16;
+
+            function adjustFontSize(delta) {
+                // Adjust font size with limits
+                currentFontSize = Math.min(
+                    Math.max(currentFontSize + delta, 12),
+                    24
+                );
+
+                // Update CSS variable
+                document.documentElement.style.setProperty(
+                    "--font-size",
+                    `${currentFontSize}px`
+                );
+
+                // Update display
+                document.querySelector(
+                    ".font-size"
+                ).textContent = `${currentFontSize}px`;
+
+                // Save to localStorage
+                localStorage.setItem("preferredFontSize", currentFontSize);
+            }
+
+            // Initialize font size on page load
+            window.addEventListener("load", () => {
+                // Set initial font size
+                document.documentElement.style.setProperty(
+                    "--font-size",
+                    `${currentFontSize}px`
+                );
+                document.querySelector(
+                    ".font-size"
+                ).textContent = `${currentFontSize}px`;
+
+                // Add scalable-text class to all text elements
+                document
+                    .querySelectorAll(
+                        "p, h1, h2, h3, h4, h5, h6, li, blockquote, label, button, input, textarea, .tab-btn, .verse-text, .options label"
+                    )
+                    .forEach((el) => el.classList.add("scalable-text"));
+            });
+
+            function changeFont(fontFamily) {
+                document.body.style.fontFamily = fontFamily;
+                // Save preference
+                localStorage.setItem("preferredFont", fontFamily);
+            }
+
+            // Load saved preferences
+            window.addEventListener("load", () => {
+                const savedFontSize = localStorage.getItem("preferredFontSize");
+                if (savedFontSize) {
+                    currentFontSize = parseInt(savedFontSize);
+                    adjustFontSize(0);
+                }
+
+                const savedFont = localStorage.getItem("preferredFont");
+                if (savedFont) {
+                    document.body.style.fontFamily = savedFont;
+                    document.querySelector(".font-family-select").value =
+                        savedFont;
+                }
+            });
+
+            // Add CSS Variable for scaling
+            document.documentElement.style.setProperty(
+                "--content-scale",
+                "100%"
+            );
+
+            // Update content elements to use the scale
+            document
+                .querySelectorAll(
+                    ".tab-content, .memory-verse, .reflection-notes"
+                )
+                .forEach((el) => {
+                    el.classList.add("adjustable-content");
+                    el.style.fontSize =
+                        "calc(1rem * var(--content-scale) / 100)";
+                });
+
+            // Add to your existing <script> section
+            document.addEventListener("DOMContentLoaded", () => {
+                // Love Meter functionality
+                const loveSlider = document.querySelector(".love-slider");
+                const ratingValue = document.querySelector(".rating-value");
+                const ratingFeedback =
+                    document.querySelector(".rating-feedback");
+
+                if (loveSlider) {
+                    loveSlider.addEventListener("input", () => {
+                        const value = loveSlider.value;
+                        ratingValue.textContent = `${value}/10`;
+
+                        // Update feedback based on rating
+                        const feedback =
+                            value >= 8
+                                ? "Excellent! Keep showing God's love!"
+                                : value >= 6
+                                ? "Good effort! There's room to grow."
+                                : "Consider ways to show more love tomorrow.";
+                        ratingFeedback.textContent = feedback;
+                    });
+                }
+
+                // Action Items functionality
+                const addActionBtn = document.querySelector(".add-action-btn");
+                if (addActionBtn) {
+                    addActionBtn.addEventListener("click", () => {
+                        const action = prompt("Enter your custom love action:");
+                        if (action) {
+                            const actionItems =
+                                document.querySelector(".action-items");
+                            const newAction = document.createElement("div");
+                            newAction.className = "action-item";
+                            newAction.innerHTML = `
+                                                                                <input type="checkbox" id="action${Date.now()}">
+                                                                                <label for="action${Date.now()}">${action}</label>
+                                                                            `;
+                            actionItems.insertBefore(newAction, addActionBtn);
+                        }
+                    });
+                }
+
+                // Journal Prompts functionality
+                const prompts = [
+                    "How did you demonstrate God's love today?",
+                    "What challenges did you face in showing love?",
+                    "How can you better express God's love tomorrow?",
+                ];
+                let currentPrompt = 0;
+
+                const updatePrompt = () => {
+                    const promptElement = document.querySelector(".prompt p");
+                    const promptCounter =
+                        document.querySelector(".prompt-counter");
+                    if (promptElement) {
+                        promptElement.textContent = prompts[currentPrompt];
+                        promptCounter.textContent = `${currentPrompt + 1}/${
+                            prompts.length
+                        }`;
+                    }
+                };
+
+                const nextPromptBtn = document.querySelector(".next-prompt");
+                const prevPromptBtn = document.querySelector(".prev-prompt");
+
+                if (nextPromptBtn && prevPromptBtn) {
+                    nextPromptBtn.addEventListener("click", () => {
+                        if (currentPrompt < prompts.length - 1) {
+                            currentPrompt++;
+                            updatePrompt();
+                            prevPromptBtn.disabled = false;
+                            if (currentPrompt === prompts.length - 1) {
+                                nextPromptBtn.disabled = true;
+                            }
+                        }
+                    });
+
+                    prevPromptBtn.addEventListener("click", () => {
+                        if (currentPrompt > 0) {
+                            currentPrompt--;
+                            updatePrompt();
+                            nextPromptBtn.disabled = false;
+                            if (currentPrompt === 0) {
+                                prevPromptBtn.disabled = true;
+                            }
+                        }
+                    });
+                }
+
+                // Commitment functionality
+                const saveCommitmentBtn =
+                    document.querySelector(".save-commitment");
+                const commitmentInput =
+                    document.querySelector(".commitment-input");
+                const commitmentList =
+                    document.querySelector(".commitment-list");
+
+                if (saveCommitmentBtn && commitmentInput && commitmentList) {
+                    // Load saved commitments
+                    const savedCommitments = JSON.parse(
+                        localStorage.getItem("commitments") || "[]"
+                    );
+                    savedCommitments.forEach((commitment) => {
+                        const li = document.createElement("li");
+                        li.textContent = commitment;
+                        commitmentList.appendChild(li);
+                    });
+
+                    saveCommitmentBtn.addEventListener("click", () => {
+                        const commitment = commitmentInput.value.trim();
+                        if (commitment) {
+                            const li = document.createElement("li");
+                            li.textContent = commitment;
+                            commitmentList.appendChild(li);
+
+                            // Save to localStorage
+                            const commitments = JSON.parse(
+                                localStorage.getItem("commitments") || "[]"
+                            );
+                            commitments.push(commitment);
+                            localStorage.setItem(
+                                "commitments",
+                                JSON.stringify(commitments)
+                            );
+
+                            commitmentInput.value = "";
+                            showToast("Commitment saved! 🙏");
+                        }
+                    });
+                }
+            });
+        </script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const trigger = document.getElementById("fruitTrigger");
+                const audio = document.getElementById("fruitSound");
+
+                let hasPlayed = sessionStorage.getItem("fruitSoundPlayed");
+
+                trigger.addEventListener("click", function () {
+                    // Animate
+                    trigger.classList.add("bounce");
+                    setTimeout(() => trigger.classList.remove("bounce"), 300);
+
+                    // Play sound only once per session
+                    if (!hasPlayed && audio) {
+                        audio.currentTime = 0;
+                        audio.play();
+                        sessionStorage.setItem("fruitSoundPlayed", "true");
+                        hasPlayed = true;
+                    }
+                });
+            });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>
